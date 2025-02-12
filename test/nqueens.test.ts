@@ -14,5 +14,9 @@ describe('NQueens', () => {
         const solutions = solveNQueens(3);
         expect(solutions.length).toBe(0);
     });
-  });
+    it("should return 2 solutions for n=4", () => {
+        const solutions = solveNQueens(4);
+        expect(solutions.length).toBe(2);
+    });
+});
   
