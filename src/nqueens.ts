@@ -1,6 +1,13 @@
 import * as readline from "readline";
 
 export function solveNQueens(n: number): string[][] {
+    if(!Number.isInteger(n) || n < 1) {
+        throw new Error("n devrait être un entier positif");
+    }
+    if (n > 14) {
+        throw new Error("n est beaucoup trop grand");
+    }
+
     if (n === 1) {
         return [["#"]];
     }

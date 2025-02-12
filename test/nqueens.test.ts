@@ -44,5 +44,10 @@ describe('NQueens', () => {
         const solutions = solveNQueens(6);
         expect(solutions.length).toBe(4);
     });
+    it("should only accept positive integers", () => {
+        expect(() => solveNQueens(-4)).toThrow("n devrait être un entier positif");
+        expect(() => solveNQueens(0)).toThrow("n devrait être un entier positif");
+        expect(() => solveNQueens("4" as unknown as number)).toThrow();
+      });
 });
   
