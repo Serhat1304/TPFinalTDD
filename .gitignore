@@ -1,0 +1,15 @@
+# Node / NPM
+node_modules/
+
+# Build output
+dist/
+build/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# OS/éditeur
+.DS_Store
+.idea/
+.vscode/
+*.iml
