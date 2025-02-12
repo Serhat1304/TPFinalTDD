@@ -49,5 +49,13 @@ describe('NQueens', () => {
         expect(() => solveNQueens(0)).toThrow("n devrait être un entier positif");
         expect(() => solveNQueens("4" as unknown as number)).toThrow();
       });
+      it("should return 14200 solutions for n=12 in a reasonable time", () => {
+        const startTime = Date.now();
+        const solutions = solveNQueens(12);
+        const endTime = Date.now();
+    
+        expect(solutions.length).toBe(14200);
+        expect(endTime - startTime).toBeLessThan(10000);
+    });
 });
   
