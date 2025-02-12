@@ -57,5 +57,14 @@ describe('NQueens', () => {
         expect(solutions.length).toBe(14200);
         expect(endTime - startTime).toBeLessThan(10000);
     });
+    it("should return solutions of correct dimensions (n x n)", () => {
+        for (let n = 4; n <= 8; n++) {
+            const solutions = solveNQueens(n);
+            for (const solution of solutions) {
+                expect(solution.length).toBe(n);
+                solution.forEach(row => expect(row.length).toBe(n));
+            }
+        }
+    });
 });
   
