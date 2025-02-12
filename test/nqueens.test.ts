@@ -1,4 +1,4 @@
-import { solveNQueens } from "../src/nqueens";
+import { findSingleAttackConfigurations, solveNQueens } from "../src/nqueens";
 
 describe('NQueens', () => {
     it('should return 1 solution for n=1', () => {
@@ -66,5 +66,48 @@ describe('NQueens', () => {
             }
         }
     });
+
+    //Tests pour la partie 2
+
+
+    it("should return at least one valid solution for n=4", () => {
+        const solutions = findSingleAttackConfigurations(4);
+        expect(solutions.length).toBeGreaterThan(0);
+        solutions.forEach((solution) => {
+          expect(solution.length).toBe(4);
+          solution.forEach(row => expect(row.length).toBe(4));
+        });
+      });
+      it("should ensure each queen attacks and is attacked exactly once", () => {
+        const solutions = findSingleAttackConfigurations(4);
+    
+        solutions.forEach(solution => {
+          let queens: [number, number][] = [];
+    
+          for (let r = 0; r < 4; r++) {
+            for (let c = 0; c < 4; c++) {
+              if (solution[r][c] === "#") {
+                queens.push([r, c]);
+              }
+            }
+          }
+    
+          let attackCount = new Map<number, number>();
+    
+          for (const [r1, c1] of queens) {
+            let attacks = 0;
+            for (const [r2, c2] of queens) {
+              if (r1 === r2 && c1 === c2) continue;
+              if (r1 === r2 || c1 === c2 || Math.abs(r1 - r2) === Math.abs(c1 - c2)) {
+                attacks++;
+              }
+            }
+            attackCount.set(r1 * 4 + c1, attacks);
+          }
+    
+          // Chaque reine doit attaquer et être attaquée exactement une fois
+          expect([...attackCount.values()].every(count => count === 1)).toBe(true);
+        });
+      });
 });
   
