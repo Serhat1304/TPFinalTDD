@@ -16,6 +16,23 @@ describe('NQueens', () => {
     });
     it("should return 2 solutions for n=4", () => {
         const solutions = solveNQueens(4);
+        const expectedSolutions = [
+            [
+              "O#OO",
+              "OOO#",
+              "#OOO",
+              "OO#O",
+            ],
+            [
+              "OO#O",
+              "#OOO",
+              "OOO#",
+              "O#OO",
+            ],
+          ];
+      
+          expect(solutions.length).toBe(2);
+          expect(solutions).toEqual(expectedSolutions);
         expect(solutions.length).toBe(2);
     });
     it("should return 10 solutions for n=5", () => {
