@@ -1,3 +1,5 @@
+import * as readline from "readline";
+
 export function solveNQueens(n: number): string[][] {
     if (n === 1) {
         return [["#"]];
@@ -46,3 +48,26 @@ export function solveNQueens(n: number): string[][] {
   
     return solutions;
   }
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  
+  rl.question("Entrez la valeur de N : ", (input) => {
+    const n = parseInt(input, 10);
+  
+    if (isNaN(n) || n < 1) {
+      console.log("Erreur : Veuillez entrer un entier valide (n >= 1).");
+    } else {
+      const solutions = solveNQueens(n);
+      console.log(`\nNombre de solutions pour n=${n} : ${solutions.length}`);
+      solutions.forEach((solution, index) => {
+        console.log(`\nSolution #${index + 1}:`);
+        solution.forEach(row => console.log(row));
+        console.log("------");
+      });
+    }
+  
+    rl.close();
+  });
