@@ -78,3 +78,16 @@ export function solveNQueens(n: number): string[][] {
   
     rl.close();
   });
+
+// PARTIE 2
+
+export function findSingleAttackConfigurations(n: number): string[][][] {
+    if (n < 4) {
+      throw new Error("L'échiquier doit être au minimum 4x4.");
+    }
+  
+    const solutions: string[][][] = [];
+  
+  
+    return solutions;
+  }
