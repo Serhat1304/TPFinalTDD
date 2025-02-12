@@ -10,5 +10,13 @@ export function solveNQueens(n: number) : string[][]{
     const solutions : string [][] = [];
     const cols = Array(n).fill(-1);
 
+    function searchQueens(row: number) {
+        if (row == n) {
+            return;
+        } for (let col = 0; col < n; col++) {
+            
+        }
+    }
+
     return solutions
 }
